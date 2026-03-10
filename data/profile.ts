@@ -5,6 +5,7 @@ export const profile: Profile = {
   title: "Software Engineer",
   intro: "I build full-stack products with real-time systems, modern web frameworks, and applied machine learning.",
   bio: "Computer Science graduate from the University of South Florida (GPA 3.99) and incoming M.S. student at the University of Dayton (GPA 4.0). I have shipped production features across Angular, ASP.NET Core, and Next.js stacks, and I enjoy turning product requirements into performant, scalable experiences.",
+  avatarPath: "/hero-avatar.png",
   location: "Dayton, Ohio / Tampa, Florida",
   email: "lamnguyendnvncn@gmail.com",
   phone: "+1 (813) 647-2741",

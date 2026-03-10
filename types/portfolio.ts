@@ -16,6 +16,7 @@ export type Profile = {
   title: string;
   intro: string;
   bio: string;
+  avatarPath: string;
   location: string;
   email: string;
   phone: string;

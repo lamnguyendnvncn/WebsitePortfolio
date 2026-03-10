@@ -24,6 +24,14 @@ const siteDescription =
 export const metadata: Metadata = {
   title: "Lam Nguyen | Software Engineer",
   description: siteDescription,
+  icons: {
+    icon: [
+      { url: "/site-icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/site-icon-64.png", sizes: "64x64", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/site-icon-32.png",
+  },
   openGraph: {
     title: "Lam Nguyen | Software Engineer",
     description: siteDescription,

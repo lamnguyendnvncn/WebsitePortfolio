@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Download, Mail, Sparkles } from "lucide-react";
 
@@ -26,70 +27,96 @@ export default function HeroSection() {
       />
 
       <div className="container relative">
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-4xl space-y-8"
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            <Sparkles className="h-3 w-3" />
-            Available for software engineering roles
-          </div>
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-8"
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              <Sparkles className="h-3 w-3" />
+              Available for software engineering roles
+            </div>
 
-          <div className="space-y-6">
-            <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">{profile.location}</p>
-            <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-              <motion.span
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.15, duration: 0.65 }}
-                className="block"
-              >
-                {profile.name}
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3, duration: 0.65 }}
-                className="mt-1 block bg-gradient-to-r from-cyan-300 via-primary to-emerald-300 bg-clip-text text-transparent"
-              >
-                {profile.title}
-              </motion.span>
-            </h1>
-            <p className="max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-              {profile.intro}
-            </p>
-          </div>
+            <div className="space-y-6">
+              <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">{profile.location}</p>
+              <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+                <motion.span
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.15, duration: 0.65 }}
+                  className="block"
+                >
+                  {profile.name}
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3, duration: 0.65 }}
+                  className="mt-1 block bg-gradient-to-r from-cyan-300 via-primary to-emerald-300 bg-clip-text text-transparent"
+                >
+                  {profile.title}
+                </motion.span>
+              </h1>
+              <p className="max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
+                {profile.intro}
+              </p>
+            </div>
+
+            <motion.div
+              className="flex flex-wrap gap-3"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+            >
+              <Button size="lg" asChild>
+                <a href="#projects">View Projects</a>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <a href={profile.resumePath} download>
+                  <Download className="h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
+              <Button size="lg" variant="ghost" asChild>
+                <a href="#contact">
+                  <Mail className="h-4 w-4" />
+                  Contact Me
+                </a>
+              </Button>
+            </motion.div>
+          </motion.div>
 
           <motion.div
-            className="flex flex-wrap gap-3"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45, duration: 0.5 }}
+            initial={{ opacity: 0, y: 26, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.25, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -6, scale: 1.01 }}
+            className="relative mx-auto mt-2 w-full max-w-[270px] sm:max-w-[350px] lg:mt-0 lg:max-w-[430px]"
           >
-            <Button size="lg" asChild>
-              <a href="#projects">View Projects</a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href={profile.resumePath} download>
-                <Download className="h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
-            <Button size="lg" variant="ghost" asChild>
-              <a href="#contact">
-                <Mail className="h-4 w-4" />
-                Contact Me
-              </a>
-            </Button>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 rounded-[2.1rem] bg-[radial-gradient(circle_at_center,_hsl(var(--primary)/0.26)_0%,_transparent_70%)] blur-2xl"
+            />
+            <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-card/50 shadow-[0_24px_80px_hsl(var(--primary)/0.18)]">
+              <Image
+                src={profile.avatarPath}
+                alt={`${profile.name} portrait illustration`}
+                width={560}
+                height={560}
+                priority
+                sizes="(max-width: 640px) 270px, (max-width: 1024px) 350px, 430px"
+                className="h-auto w-full object-cover"
+              />
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
 
         <motion.a
           href="#about"
           aria-label="Scroll to about section"
-          className="mt-16 inline-flex items-center gap-2 rounded-full border border-border/70 px-3 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+          className="mt-14 inline-flex items-center gap-2 rounded-full border border-border/70 px-3 py-2 text-sm text-muted-foreground transition hover:text-foreground md:mt-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.5 }}
