@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --background: 210 40% 98%;
+  --foreground: 220 44% 11%;
+  --card: 210 40% 99%;
+  --card-foreground: 220 44% 11%;
+  --primary: 196 100% 42%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 212 33% 93%;
+  --secondary-foreground: 221 39% 16%;
+  --muted: 210 28% 93%;
+  --muted-foreground: 220 18% 36%;
+  --accent: 168 76% 42%;
+  --accent-foreground: 210 40% 98%;
+  --border: 214 29% 84%;
+  --input: 214 29% 84%;
+  --ring: 196 100% 42%;
+  --radius-xl: 1.25rem;
+  --radius-lg: 0.9rem;
+  --radius-md: 0.7rem;
+  --radius-sm: 0.45rem;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: 223 47% 7%;
+  --foreground: 210 40% 96%;
+  --card: 223 40% 10%;
+  --card-foreground: 210 40% 96%;
+  --primary: 191 98% 58%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 222 25% 17%;
+  --secondary-foreground: 210 40% 92%;
+  --muted: 222 25% 15%;
+  --muted-foreground: 214 20% 73%;
+  --accent: 168 88% 52%;
+  --accent-foreground: 223 47% 7%;
+  --border: 223 20% 25%;
+  --input: 223 20% 23%;
+  --ring: 191 98% 58%;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-space-grotesk), sans-serif;
+  @apply transition-colors duration-500;
+  background:
+    radial-gradient(circle at 12% 8%, hsl(var(--primary) / 0.14), transparent 24%),
+    radial-gradient(circle at 88% 22%, hsl(var(--accent) / 0.12), transparent 30%),
+    hsl(var(--background));
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sora), sans-serif;
+}
+
+::selection {
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--foreground));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition-property:
+      background-color,
+      border-color,
+      color,
+      fill,
+      stroke,
+      box-shadow,
+      text-decoration-color;
+    transition-duration: 420ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
